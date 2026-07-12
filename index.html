@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — BrowserVault</title>
+  <meta name="description" content="Privacy Policy for the BrowserVault Chrome Extension. Your master password and settings stay on your device.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="icon16.png">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:      '#0f172a',
+            paper:    '#f8fafc',
+            navy:     '#1e3a8a',
+            blue:     '#5b32f5',
+            blueSoft: '#f4f1fe',
+            blueMid:  '#4a26d4',
+            muted:    '#64748b',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+            mono:    ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-feature-settings: "ss01"; }
+    ::selection { background: #5b32f5; color: white; }
+
+    /* Scrollspy pill */
+    .toc-link { position: relative; transition: color .15s; }
+    .toc-link.active { color: #0f172a; font-weight: 600; }
+    .toc-link.active::before {
+      content: '';
+      position: absolute;
+      left: -17px; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      background: #5b32f5;
+    }
+
+    .prose-block p  { margin-bottom: 1rem; line-height: 1.78; }
+    .prose-block ul { margin-bottom: 1rem; }
+    .prose-block li { line-height: 1.7; }
+
+    /* Shield pulse animation */
+    @keyframes pulse-ring {
+      0%   { opacity: .6; transform: scale(1); }
+      70%  { opacity: 0;  transform: scale(1.18); }
+      100% { opacity: 0;  transform: scale(1.18); }
+    }
+    .pulse-ring { animation: pulse-ring 2.4s cubic-bezier(.4,0,.6,1) infinite; transform-origin: center; }
+
+    /* checkmark draw */
+    @keyframes draw {
+      from { stroke-dashoffset: 30; }
+      to   { stroke-dashoffset: 0;  }
+    }
+    .check-draw {
+      stroke-dasharray: 30;
+      stroke-dashoffset: 0;
+      animation: draw .5s .7s cubic-bezier(.4,0,.2,1) both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pulse-ring { animation: none; }
+      .check-draw { animation: none; }
+    }
+
+    /* Gradient header stripe */
+    .hero-stripe {
+      background: linear-gradient(135deg, #1e3a8a 0%, #5b32f5 60%, #4a26d4 100%);
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink font-body antialiased">
+
+  <!-- ── Top bar ───────────────────────────────────────────────────────────── -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 font-display font-semibold tracking-tight text-navy">
+        <img src="icon16.png" alt="BrowserVault" class="w-7 h-7 rounded-lg object-contain" />
+        BrowserVault
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="#"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-navy text-white text-sm font-medium hover:bg-blue transition-colors shadow-sm">
+          Install extension
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener"
+           class="hidden sm:flex items-center gap-1.5 text-sm text-muted hover:text-ink transition-colors">
+          View source
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-16">
+
+    <!-- ── Hero ──────────────────────────────────────────────────────────────── -->
+    <section class="hero-stripe text-white">
+      <div class="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+        <div class="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+
+          <div>
+            <p class="font-mono text-xs tracking-widest text-blue-200 uppercase mb-5">Privacy Policy · BrowserVault</p>
+            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight">
+              Local-first security.<br><span class="text-blue-300">Absolute privacy.</span>
+            </h1>
+            <p class="mt-6 text-lg text-blue-100 max-w-lg leading-relaxed">
+              BrowserVault keeps your browser safe using on-device encryption. Your master password, 
+              biometrics, and browsing activity never leave your computer.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+              <span class="px-3 py-1.5 rounded-full bg-white/15 text-white font-medium backdrop-blur">Local AES Encryption</span>
+              <span class="px-3 py-1.5 rounded-full bg-white/15 text-white font-medium backdrop-blur">No Tracking</span>
+              <span class="px-3 py-1.5 rounded-full bg-white/15 text-white font-medium backdrop-blur">Your Keys, Your Vault</span>
+            </div>
+            <p class="mt-8 text-sm text-blue-200 font-mono">Last updated: <span id="lastUpdated">July 13, 2026</span></p>
+          </div>
+
+          <!-- Shield graphic -->
+          <div class="justify-self-center">
+            <svg width="200" height="220" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Pulse ring -->
+              <circle class="pulse-ring" cx="100" cy="105" r="78" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+              <!-- Shield body -->
+              <path d="M100 18 L168 46 L168 100 C168 143 136 178 100 192 C64 178 32 143 32 100 L32 46 Z"
+                    fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- Lock body -->
+              <rect x="75" y="100" width="50" height="38" rx="6" fill="white" opacity="0.95"/>
+              <!-- Lock shackle -->
+              <path d="M84 100 L84 88 Q84 74 100 74 Q116 74 116 88 L116 100"
+                    stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.95"/>
+              <!-- Keyhole -->
+              <circle cx="100" cy="116" r="5" fill="#1e3a8a"/>
+              <rect x="97.5" y="119" width="5" height="9" rx="2" fill="#1e3a8a"/>
+              <!-- Checkmark in shield top area -->
+              <polyline class="check-draw" points="83,70 96,82 118,58"
+                        stroke="rgba(255,255,255,0.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Body with TOC ─────────────────────────────────────────────────────── -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-[220px_1fr] gap-16">
+
+      <!-- TOC -->
+      <nav class="hidden md:block sticky top-24 self-start">
+        <p class="font-mono text-xs tracking-widest text-muted uppercase mb-4">On this page</p>
+        <ul class="space-y-3 text-sm text-muted border-l border-ink/10 pl-4">
+          <li><a href="#overview"     class="toc-link hover:text-ink">Overview</a></li>
+          <li><a href="#data"         class="toc-link hover:text-ink">Data we collect</a></li>
+          <li><a href="#permissions"  class="toc-link hover:text-ink">Permissions explained</a></li>
+          <li><a href="#host"         class="toc-link hover:text-ink">Site & API scope</a></li>
+          <li><a href="#storage"      class="toc-link hover:text-ink">Where settings live</a></li>
+          <li><a href="#sharing"      class="toc-link hover:text-ink">Third parties</a></li>
+          <li><a href="#changes"      class="toc-link hover:text-ink">Policy changes</a></li>
+          <li><a href="#contact"      class="toc-link hover:text-ink">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Content -->
+      <div class="max-w-2xl">
+
+        <!-- Overview -->
+        <article id="overview" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Overview</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>BrowserVault ("the extension", "we", "our") is a security-focused Chrome extension designed to lock your browser interface, protect against unauthorized access, and automate privacy safeguards (like wiping history). This policy explains how the extension handles your data.</p>
+            <p>The short version: BrowserVault is built on a <strong>local-first</strong> architecture. Your master password is cryptographically hashed (using PBKDF2) and stored directly on your own device. The extension has no external analytics, no advertising trackers, and only communicates with a dedicated backend solely for OTP email recovery.</p>
+          </div>
+        </article>
+
+        <!-- Data -->
+        <article id="data" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Data we collect</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>The extension operates almost entirely offline. We do <strong>not</strong> collect, transmit, store remotely, or sell:</p>
+            <ul class="list-none space-y-2 pl-0 mt-4">
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue shrink-0"></span>
+                Your master password (only a salted hash is kept locally)
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue shrink-0"></span>
+                Your biometric data (handled securely by your device's WebAuthn API)
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue shrink-0"></span>
+                Your browsing history or the URLs you visit
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue shrink-0"></span>
+                Personally identifiable information (name, IP address, device ID)
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue shrink-0"></span>
+                Analytics, usage events, crash reports, or diagnostics
+              </li>
+            </ul>
+            <p class="mt-4"><strong>Recovery Email:</strong> If you choose to configure a recovery email address, this email is saved locally and only transmitted to our secure OTP-generation backend when you explicitly request a password reset code. We do not store your email in a database or use it for marketing.</p>
+          </div>
+        </article>
+
+        <!-- Permissions -->
+        <article id="permissions" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Permissions explained</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>Chrome Manifest V3 requires extensions to declare every permission upfront. Here is exactly what each one is used for — and what it is never used for.</p>
+            <div class="mt-6 space-y-4">
+              <!-- storage -->
+              <div class="border border-ink/10 rounded-xl p-5 hover:border-blue/30 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-blue shrink-0"></span>
+                  <p class="font-mono text-xs text-blue font-medium">storage</p>
+                </div>
+                <p class="text-sm text-ink/80 leading-relaxed">
+                  Saves your master password hash, extension preferences (like auto-lock timers), and activity logs in Chrome's local storage on your own device.
+                </p>
+              </div>
+              <!-- idle -->
+              <div class="border border-ink/10 rounded-xl p-5 hover:border-blue/30 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-blue shrink-0"></span>
+                  <p class="font-mono text-xs text-blue font-medium">idle</p>
+                </div>
+                <p class="text-sm text-ink/80 leading-relaxed">
+                  Used exclusively by the "Idle Auto-Lock" feature to detect when you step away from your computer so the extension can automatically secure the browser.
+                </p>
+              </div>
+              <!-- tabs -->
+              <div class="border border-ink/10 rounded-xl p-5 hover:border-blue/30 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-blue shrink-0"></span>
+                  <p class="font-mono text-xs text-blue font-medium">tabs</p>
+                </div>
+                <p class="text-sm text-ink/80 leading-relaxed">
+                  Allows the extension to redirect tabs to the lock screen, prevent closing the lock page, and execute the core locking mechanism across all active windows.
+                </p>
+              </div>
+              <!-- notifications & alarms -->
+              <div class="border border-ink/10 rounded-xl p-5 hover:border-blue/30 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-blue shrink-0"></span>
+                  <p class="font-mono text-xs text-blue font-medium">notifications & alarms</p>
+                </div>
+                <p class="text-sm text-ink/80 leading-relaxed">
+                  Alarms are used to trigger Scheduled Locks at your designated times. Notifications are used to warn you 30 seconds before an automated lock occurs.
+                </p>
+              </div>
+              <!-- history -->
+              <div class="border border-ink/10 rounded-xl p-5 hover:border-blue/30 transition-colors">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-2 h-2 rounded-full bg-blue shrink-0"></span>
+                  <p class="font-mono text-xs text-blue font-medium">history & declarativeNetRequest</p>
+                </div>
+                <p class="text-sm text-ink/80 leading-relaxed">
+                  History permission is only used to instantly wipe your browsing history upon lock (if you enable that setting). declarativeNetRequest empowers the Domain Watcher feature to instantly block and redirect restricted websites.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Host access scope -->
+        <article id="host" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Site & API scope</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>The extension declares the following host permissions:</p>
+            <div class="my-4 border border-ink/10 rounded-xl p-5 space-y-2">
+              <p class="font-mono text-xs text-blue mb-1.5">host_permissions & content_scripts</p>
+              <code class="font-mono text-sm bg-blueSoft px-2 py-1 rounded text-navy block w-max">&lt;all_urls&gt;</code>
+              <code class="font-mono text-sm bg-blueSoft px-2 py-1 rounded text-navy block w-max">https://browser-vault-backend.vercel.app/*</code>
+            </div>
+            <p>Content scripts must run on <code>&lt;all_urls&gt;</code> to successfully deploy the lock overlay over any website you might be visiting when the browser locks. The API permission is strictly used to interact with our backend service to dispatch One-Time Passwords (OTPs) to your email during password recovery.</p>
+          </div>
+        </article>
+
+        <!-- Storage -->
+        <article id="storage" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Where your settings live</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>All sensitive information, activity logs, and configurations are saved locally via Chrome's <code>chrome.storage.local</code> API. If you uninstall the extension, this data is completely erased from your device. We do not maintain a cloud database of your passwords or settings.</p>
+          </div>
+        </article>
+
+        <!-- Sharing -->
+        <article id="sharing" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Third parties</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>We do not share, sell, rent, or trade any information with any third party. The extension embeds no advertising networks, analytics libraries, or crash-reporting tools.</p>
+          </div>
+        </article>
+
+        <!-- Changes -->
+        <article id="changes" class="scroll-mt-24 mb-16">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Changes to this policy</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>If this policy changes, this page will be updated and the "Last updated" date at the top will reflect the change. Material changes will also be noted in the extension's Chrome Web Store release changelog.</p>
+          </div>
+        </article>
+
+        <!-- Contact -->
+        <article id="contact" class="scroll-mt-24">
+          <h2 class="font-display text-2xl font-semibold mb-4 text-navy">Contact</h2>
+          <div class="prose-block text-[15px] text-ink/80">
+            <p>Questions about this policy or the extension can be sent through either of the following channels:</p>
+            <div class="mt-4 flex flex-col sm:flex-row gap-3">
+              <a href="#"
+                 target="_blank" rel="noopener"
+                 class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-navy text-white text-sm font-medium hover:bg-blue transition-colors">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                Open a GitHub issue
+              </a>
+              <a href="https://rijoan.com" target="_blank" rel="noopener"
+                 class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-ink/15 text-sm font-medium hover:bg-blue/5 hover:border-blue/30 transition-colors">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+                </svg>
+                rijoan.com
+              </a>
+            </div>
+            <p class="mt-6 text-sm text-muted">Developed by <strong class="text-ink">Md Rijoan Maruf</strong>.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────────────────────── -->
+  <footer class="border-t border-ink/10 bg-paper">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-muted">
+      <div class="flex items-center gap-2">
+        <img src="icon16.png" alt="" class="w-4 h-4 rounded object-contain opacity-70">
+        <span>© 2026 BrowserVault</span>
+      </div>
+      <p class="font-mono text-xs">React · Vite · Chrome Manifest V3</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Scrollspy for TOC ───────────────────────────────────────────────────
+    const sections = document.querySelectorAll('article[id]');
+    const links    = document.querySelectorAll('.toc-link');
+    const setActive = (id) => {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
